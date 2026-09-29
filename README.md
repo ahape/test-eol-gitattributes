@@ -8,17 +8,23 @@ f932e60 Add '* -text' .gitattributes + CRLF file StatHat.cs
 34ae17a Initial commit
 ```
 
-## `* -text`
+Each time the default `.gitattributes` setting changed, I modified `StatHat.cs` and then ran `git add`. These are the `git ls-files` results.
+
+## `* -text` (unset)
+<https://git-scm.com/docs/gitattributes#Documentation/gitattributes.txt-Set-1>
+
+This is _sort of_ similar to "[unspecified](https://git-scm.com/docs/gitattributes#Documentation/gitattributes.txt-Unspecified)", but unspecified will honor `.gitconfig`'s `core.autocrlf` setting.
 ```diff
  AlanLaptop% git switch --detach f932e60 && git ls-files --eol
  HEAD is now at f932e60 Add '* -text' .gitattributes + CRLF file StatHat.cs
  i/lf    w/lf    attr/-text              .gitattributes
  i/lf    w/lf    attr/-text              LICENSE
-@@ "git add" uses core.autocrlf setting @@
+@@ "git add" takes the bytes from the file as they are @@
  i/crlf  w/crlf  attr/-text              StatHat.cs
 ```
 
 ## `* text=auto`
+<https://git-scm.com/docs/gitattributes#Documentation/gitattributes.txt-Settostringvalueauto>
 ```diff
  AlanLaptop% git switch --detach e98cce1 && git ls-files --eol
  Previous HEAD position was f932e60 Add '* -text' .gitattributes + CRLF file StatHat.cs
@@ -29,7 +35,8 @@ f932e60 Add '* -text' .gitattributes + CRLF file StatHat.cs
  i/crlf  w/crlf  attr/text=auto          StatHat.cs
 ```
 
-## `* text`
+## `* text` (set)
+<https://git-scm.com/docs/gitattributes#Documentation/gitattributes.txt-Set-1>
 ```diff
  AlanLaptop% git switch master && git ls-files --eol
  Previous HEAD position was e98cce1 Update StatHat.cs to test 'git add' behavior
